@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "{B51C0547-4E1C-AA4A-41CD-929247BF9601}",
+	"EngineAssociation": "{567B02E9-4D5C-A04C-3FFA-CEAF75A048FC}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -43,11 +43,11 @@
 			]
 		},
 		{
-			"Name": "SteamVR",
-			"Enabled": false
+			"Name": "OculusAudio",
+			"Enabled": true
 		},
 		{
-			"Name": "OculusAudio",
+			"Name": "OnlineSubsystemSteam",
 			"Enabled": true
 		}
 	],
