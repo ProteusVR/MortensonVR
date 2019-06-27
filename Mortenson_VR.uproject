@@ -43,11 +43,11 @@
 			]
 		},
 		{
-			"Name": "SteamVR",
-			"Enabled": false
+			"Name": "OculusAudio",
+			"Enabled": true
 		},
 		{
-			"Name": "OculusAudio",
+			"Name": "OnlineSubsystemSteam",
 			"Enabled": true
 		}
 	],
