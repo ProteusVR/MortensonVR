@@ -341,28 +341,32 @@ void AProteusLocalAvatar::ResetLeftHandTransform()
 
 void AProteusLocalAvatar::SetLeftHandVisibility(bool LeftHandVisible)
 {
-	AvatarComponent->SetLeftHandVisible(LeftHandVisible);
+	//AvatarComponent->SetLeftHandVisible(LeftHandVisible);
+	ovrAvatar_SetLeftHandVisibility(AvatarComponent->Avatar, LeftHandVisible);
 }
 
 void AProteusLocalAvatar::SetRightHandVisibility(bool RightHandVisible)
 {
-	AvatarComponent->SetRightHandVisible(RightHandVisible);
+	//AvatarComponent->SetRightHandVisible(RightHandVisible);
+	ovrAvatar_SetLeftHandVisibility(AvatarComponent->Avatar, RightHandVisible);
 }
 
 void AProteusLocalAvatar::SetControllersVisibility(bool ControllersVisible)
 {
-	AvatarComponent->SetHandsOnControllers(ControllersVisible);
+	//AvatarComponent->SetHandsOnControllers(ControllersVisible);
+	ovrAvatar_SetLeftControllerVisibility(AvatarComponent->Avatar, ControllersVisible);
+	ovrAvatar_SetRightControllerVisibility(AvatarComponent->Avatar, ControllersVisible);
 }
 
 void AProteusLocalAvatar::LipSyncVismesReady()
 {
 	/*if (UseCannedLipSyncPlayback)
 	{
-		AvatarComponent->UpdateVisemeValues(PlayBackLipSyncComponent->GetVisemes());
+		AvatarComponent->UpdateVisemeValues(PlayBackLipSyncComponent->GetVisemes(), PlayBackLipSyncComponent->GetLaughterScore());
 	}
 	else
 	{*/
-		AvatarComponent->UpdateVisemeValues(LipSyncComponent->GetVisemes());
+	AvatarComponent->UpdateVisemeValues(LipSyncComponent->GetVisemes(), LipSyncComponent->GetLaughterScore());
 	//}
 }
 
@@ -379,4 +383,9 @@ UOvrAvatar::MaterialType AProteusLocalAvatar::GetOvrAvatarMaterialFromType(Avata
 	}
 
 	return UOvrAvatar::MaterialType::Opaque;
+}
+
+void AProteusLocalAvatar::AvatarVisibility()
+{
+	AvatarComponent->SetVisibilityType(AvatarVisibilityType == AvatarVisibility::FirstPerson ? ovrAvatarVisibilityFlag_FirstPerson : ovrAvatarVisibilityFlag_ThirdPerson);
 }
